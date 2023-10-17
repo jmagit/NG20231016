@@ -10,8 +10,54 @@ import { Unsubscribable } from 'rxjs';
 })
 export class DemosComponent implements OnInit, OnDestroy {
   private suscriptor: Unsubscribable | undefined;
+  private nombre: string = 'mundo'
+  fecha = '2023-10-17'
+  fontSize = 24
+  listado = [
+    { id: 1, nombre: 'Madrid'},
+    { id: 2, nombre: 'BARCELONA'},
+    { id: 3, nombre: 'valencia'},
+    { id: 4, nombre: 'ciudad Real'},
+  ]
+  idProvincia = 2
+
+  resultado? : string
+  visible = true
+  estetica = { importante: true, urgente: true, error: false }
 
   constructor(public vm: NotificationService) { }
+
+  public get Nombre(): string { return this.nombre; }
+  public set Nombre(value: string) {
+    if(value == this.nombre) return
+    this.nombre = value
+  }
+
+  public saluda(): void {
+    this.resultado = `Hola ${this.Nombre}`
+  }
+
+  public despide(): void {
+    this.resultado = `Adios ${this.Nombre}`
+  }
+
+  public di(algo: string): void {
+    this.resultado = `Dice ${algo}`
+  }
+
+  cambia() {
+    this.visible = !this.visible
+    this.estetica.importante = !this.estetica.importante
+    this.estetica.error = !this.estetica.error
+  }
+
+  calcula(a: number, b: number) { return a + b }
+
+  add(provincia: string) {
+    const id = this.listado[this.listado.length - 1].id + 1
+    this.listado.push({id, nombre: provincia})
+    this.idProvincia = id
+  }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {

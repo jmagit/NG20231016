@@ -6,7 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './main';
 import { SecurityModule } from './security';
-import { LoggerService, MyCoreModule } from '@my/core';
+import { ERROR_LEVEL, LoggerService, MyCoreModule } from '@my/core';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LoggerService, MyCoreModule } from '@my/core';
   ],
   providers: [
     LoggerService,
+    { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
   ],
   bootstrap: [AppComponent]
 })

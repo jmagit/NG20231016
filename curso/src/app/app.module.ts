@@ -35,7 +35,7 @@ import { CommonComponentModule } from './common-component';
   providers: [
     LoggerService,
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
-    // { provide: LOCALE_ID, useValue: 'es-ES' },
+    { provide: LOCALE_ID, useValue: 'es-ES' },
     { provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { dateFormat: 'dd/MMM/yy' } },
   ],
   bootstrap: [AppComponent]

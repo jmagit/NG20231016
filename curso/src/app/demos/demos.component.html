@@ -37,7 +37,7 @@
     <input type="number" [(ngModel)]="valCalculadora">
   </div>
 </div>
-
+<app-form-buttons (send)="saluda()" (cancel)="despide()" />
 <app-card [header]="'Tarjeta'">
   <h1>Hola {{Nombre | elipsis:10 | uppercase}}</h1>
   <p>

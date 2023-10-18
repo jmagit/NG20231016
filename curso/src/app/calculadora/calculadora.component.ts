@@ -128,8 +128,8 @@ export class CalculadoraComponent implements OnInit, OnChanges {
     // acumulado = eval (acumulado + operador + miPantalla);
     // Number: double-precision IEEE 754 floating point.
     // 9.9 + 1.3, 0.1 + 0.2, 1.0 - 0.9
-    // this.miPantalla = parseFloat(this.acumulado.toPrecision(15)).toString();
-    this.miPantalla = this.acumulado.toString();
+    this.miPantalla = parseFloat(this.acumulado.toPrecision(15)).toString();
+    // this.miPantalla = this.acumulado.toString();
     this.miResumen = value == '=' ? '' : (`${this.miPantalla} ${value}`);
     this.updated.emit(this.acumulado);
     this.operador = value;

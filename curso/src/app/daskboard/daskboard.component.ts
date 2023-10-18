@@ -3,6 +3,7 @@ import { HomeComponent } from '../main/home/home.component';
 import { DemosComponent } from '../demos/demos.component';
 import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
 import { CalculadoraComponent } from '../calculadora/calculadora.component';
+import { FormularioComponent } from '../formulario/formulario.component';
 
 @Component({
   selector: 'app-daskboard',
@@ -11,8 +12,9 @@ import { CalculadoraComponent } from '../calculadora/calculadora.component';
 })
 export class DaskboardComponent {
   menu = [
-    { texto: 'demos', icono: 'fa-solid fa-chalkboard-user', componente: DemosComponent},
+    { texto: 'formulario', icono: 'fa-solid fa-chalkboard-user', componente: FormularioComponent},
     { texto: 'inicio', icono: 'fa-solid fa-house', componente: HomeComponent},
+    { texto: 'demos', icono: 'fa-solid fa-chalkboard-user', componente: DemosComponent},
     { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent},
     { texto: 'gráfico', icono: 'fa-solid fa-image', componente: GraficoSvgComponent},
   ]

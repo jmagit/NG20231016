@@ -19,6 +19,7 @@ import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.
 import { DaskboardComponent } from './daskboard/daskboard.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { CommonComponentModule } from './common-component';
+import { FormularioComponent } from './formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CommonComponentModule } from './common-component';
     DemosComponent,
     DaskboardComponent,
     CalculadoraComponent,
+    FormularioComponent,
   ],
   imports: [
     BrowserModule, FormsModule,

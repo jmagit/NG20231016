@@ -1,5 +1,5 @@
 <!-- <app-notification-modal /> -->
-<h1>Hola {{Nombre}}</h1>
+<h1>Hola {{Nombre | elipsis:10 | uppercase}}</h1>
 <p>
   <input type="text" [(ngModel)]="Nombre" >
   <input type="button" value="saluda" (click)="saluda()">
@@ -22,21 +22,26 @@
 <p [class.simivisible]="!visible">Ahora me ves bien</p>
 
 <p>
-  Calcula: 2 + 2 = {{2 + 2}} = {{calcula(2,2)}}
+  Calcula: 2 + 2 = {{2 + 2}} = {{calcula(2,2) | currency:'EUR':'symbol':'1.2-2' }}
 </p>
-
+<p>
+  Fecha: {{fecha | date:'dd/MMM/yyyy'}}
+</p>
 <ul>
-  <li *ngFor="let item of listado; let ind=index; let fondo=odd;"
+  <li *ngFor="let item of listado | slice:-5; let ind=index; let fondo=odd;"
     [style.background-color]="fondo ? 'LightBlue' : 'Lavender'">
-    {{item.nombre}} ({{item.id}}) [Elemento {{ind + 1}} de {{listado.length}}]
+    {{item.nombre | titlecase }} ({{item.id}}) [Elemento {{ind + 1}} de {{listado.length}}]
   </li>
 </ul>
 
 <p>
   <select [(ngModel)]="idProvincia" >
-    <option *ngFor="let p of listado" [value]="p.id">{{p.nombre}}</option>
+    <option *ngFor="let p of listado" [value]="p.id">{{p.nombre | capitalize}}</option>
   </select>
   Seleccionada: {{idProvincia}}
   <input type="text" value="Tabarnia" #txtProvincia >
   <input type="button" value="add" (click)="add(txtProvincia.value)">
 </p>
+<my-sizer [(size)]="fontSize" />
+<p [style.font-size.px]="fontSize">{{listado | json}}</p>
+<app-grafico-svg />

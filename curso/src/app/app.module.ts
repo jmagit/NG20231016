@@ -10,6 +10,7 @@ import { ERROR_LEVEL, LoggerService, MyCoreModule } from '@my/core';
 import { environment } from 'src/environments/environment';
 import { CommonServicesModule } from './common-services';
 import { DemosComponent } from './demos/demos.component';
+import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DemosComponent } from './demos/demos.component';
   imports: [
     BrowserModule, FormsModule,
     AppRoutingModule, MainModule, SecurityModule, MyCoreModule, CommonServicesModule,
+    GraficoSvgComponent,
   ],
   providers: [
     LoggerService,

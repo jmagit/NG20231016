@@ -11,11 +11,13 @@ import { environment } from 'src/environments/environment';
 import { CommonServicesModule } from './common-services';
 import { DemosComponent } from './demos/demos.component';
 import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
+import { DaskboardComponent } from './daskboard/daskboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemosComponent,
+    DaskboardComponent,
   ],
   imports: [
     BrowserModule, FormsModule,

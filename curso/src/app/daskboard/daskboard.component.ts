@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HomeComponent } from '../main/home/home.component';
 import { DemosComponent } from '../demos/demos.component';
 import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
+import { CalculadoraComponent } from '../calculadora/calculadora.component';
 
 @Component({
   selector: 'app-daskboard',
@@ -10,9 +11,10 @@ import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.
 })
 export class DaskboardComponent {
   menu = [
-    { texto: 'Inicio', icono: '', componente: HomeComponent},
-    { texto: 'Demo', icono: '', componente: DemosComponent},
-    { texto: 'Gráfico', icono: '', componente: GraficoSvgComponent},
+    { texto: 'demos', icono: 'fa-solid fa-chalkboard-user', componente: DemosComponent},
+    { texto: 'inicio', icono: 'fa-solid fa-house', componente: HomeComponent},
+    { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent},
+    { texto: 'gráfico', icono: 'fa-solid fa-image', componente: GraficoSvgComponent},
   ]
   actual: any = this.menu[0].componente
 

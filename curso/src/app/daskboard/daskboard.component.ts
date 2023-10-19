@@ -12,7 +12,7 @@ import { FormularioComponent } from '../formulario/formulario.component';
 })
 export class DaskboardComponent {
   menu = [
-    { texto: 'formulario', icono: 'fa-solid fa-chalkboard-user', componente: FormularioComponent},
+    { texto: 'formulario', icono: 'fa-solid fa-rectangle-list', componente: FormularioComponent},
     { texto: 'inicio', icono: 'fa-solid fa-house', componente: HomeComponent},
     { texto: 'demos', icono: 'fa-solid fa-chalkboard-user', componente: DemosComponent},
     { texto: 'calculadora', icono: 'fa-solid fa-calculator', componente: CalculadoraComponent},

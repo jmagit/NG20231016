@@ -1,13 +1,13 @@
 <nav>
-  <input type="button" value="add" (click)="add()">
-  <input type="button" value="edit" (click)="edit()">
+  <input type="button" value="add" (click)="add()" *ngIf="auth.isAutenticated">
+  <input type="button" value="edit" (click)="edit()" *ngIf="auth.isInRoles('Administradores')">
+  <input type="button" value="list" (click)="list()">
 </nav>
 <form #miForm="ngForm">
   <div class="mb-3">
     <label for="id" class="form-label">código:</label>
     <ng-container *ngIf="modo === 'add'">
-      <input type="number" class="form-control" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel" required
-        min="1" max="100">
+      <input type="number" class="form-control" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel" required>
       <!-- <output class="error" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</output> -->
       <output class="error" [hidden]="id.valid">{{id.errors | errormsg}}</output>
     </ng-container>
@@ -56,3 +56,6 @@
   </nav> -->
   <app-form-buttons (send)="send()" [send-disabled]="miForm.invalid" (cancel)="cancel()" />
 </form>
+<ul>
+  <li *ngFor="let item of listado">{{item.nombre}} {{item.apellidos}}</li>
+</ul>

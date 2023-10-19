@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './main';
-import { SecurityModule } from './security';
+import { AuthInterceptor, SecurityModule } from './security';
 import { ERROR_LEVEL, LoggerService, MyCoreModule } from '@my/core';
 import { environment } from 'src/environments/environment';
 import { CommonServicesModule } from './common-services';
@@ -20,7 +20,8 @@ import { DaskboardComponent } from './daskboard/daskboard.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { CommonComponentModule } from './common-component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AjaxWaitInterceptor } from './main/ajax-wait';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
     { provide: LOCALE_ID, useValue: 'es-ES' },
     { provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { dateFormat: 'dd/MMM/yy' } },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
+    { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
   ],
   bootstrap: [AppComponent]
 })

@@ -15,7 +15,7 @@ import { ERROR_LEVEL, LoggerService, MyCoreModule } from '@my/core';
 import { environment } from 'src/environments/environment';
 import { CommonServicesModule } from './common-services';
 import { DemosComponent } from './demos/demos.component';
-import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
+// import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
 import { DaskboardComponent } from './daskboard/daskboard.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { CommonComponentModule } from './common-component';
@@ -23,7 +23,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AjaxWaitInterceptor } from './main/ajax-wait';
 import { ContactosModule } from './contactos';
-import { LibrosModule } from './libros';
+// import { LibrosModule } from './libros';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { LibrosModule } from './libros';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, MainModule, SecurityModule, MyCoreModule, CommonServicesModule,
-    GraficoSvgComponent, CommonComponentModule, ContactosModule, LibrosModule,
+    // GraficoSvgComponent,
+    CommonComponentModule, ContactosModule,
   ],
   providers: [
     LoggerService,

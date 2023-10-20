@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'libros', loadChildren: () => import('./libros/modulo.module').then(mod => mod.LibrosModule) , canActivateChild: [InRoleCanActivateChild('Empleados')]},
   { path: 'config', loadChildren: () => import('./config/config.module')},
   // { matcher: svgFiles, component: GraficoSvgComponent },
-  { matcher: svgFiles, loadChildren: () => import('../lib/independientes/grafico-svg/grafico-svg.component') },
+  { matcher: svgFiles, loadComponent: () => import('../lib/independientes/grafico-svg/grafico-svg.component') },
   { path: '404.html', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent },
 

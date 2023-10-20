@@ -1,0 +1,25 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <tr class="table-info">
+      <th class="display-4">Lista de libros</th>
+      <th class="text-end"><a class="btn btn-success" routerLink="./add"><i class="fas fa-plus"></i>
+          Añadir</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of VM.Listado">
+      <td>
+        <a class="btn btn-link btn-lg px-0" [routerLink]="[item.idLibro, item.titulo]">
+          {{item.titulo}}</a>
+      </td>
+      <td class="align-middle text-end">
+        <!-- <div class="btn-group" role="group">
+          <a class="btn btn-success" [routerLink]="[item.idLibro,'edit']"><i class="fas fa-pen"></i></a>
+          <a class="btn btn-danger" (click)="VM.delete(item.idLibro)"><i class="far fa-trash-alt"></i></a>
+        </div> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p-paginator [first]="VM.rowsPerPage*VM.page" [rows]="VM.rowsPerPage" [totalRecords]="VM.totalRows" [pageLinkSize]="5"
+  (onPageChange)="VM.pageChange($event.page)"></p-paginator>

@@ -1,0 +1,20 @@
+<h1>Libro <a class="btn btn-link" [routerLink]="['/', 'libros', VM.Elemento.idLibro,'edit']"><i class="fas fa-pen"></i></a></h1>
+<dl class="row">
+  <dt>Ref.</dt>
+  <dd>{{VM.Elemento.idLibro}}</dd>
+  <dt>Título</dt>
+  <dd>{{VM.Elemento.titulo}}</dd>
+  <dt>Autor</dt>
+  <dd>{{VM.Elemento.autor}}</dd>
+  <dt>País</dt>
+  <dd>{{VM.Elemento.pais}}</dd>
+  <dt>Fecha</dt>
+  <dd>{{VM.Elemento.fecha}}</dd>
+  <dt>Páginas</dt>
+  <dd>{{VM.Elemento.paginas}}</dd>
+  <dt>wiki</dt>
+  <dd><a href="{{VM.Elemento.wiki}}" target="_blank">{{VM.Elemento.wiki}}</a></dd>
+</dl>
+<div>
+  <app-form-buttons (cancel)="VM.cancel()" />
+</div>

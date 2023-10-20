@@ -1,0 +1,61 @@
+<nav>
+  <input type="button" value="add" (click)="add()" *ngIf="auth.isAutenticated">
+  <input type="button" value="edit" (click)="edit()" *ngIf="auth.isInRoles('Administradores')">
+  <input type="button" value="list" (click)="list()">
+</nav>
+<form #miForm="ngForm">
+  <div class="mb-3">
+    <label for="id" class="form-label">código:</label>
+    <ng-container *ngIf="modo === 'add'">
+      <input type="number" class="form-control" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel" required>
+      <!-- <output class="error" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</output> -->
+      <output class="error" [hidden]="id.valid">{{id.errors | errormsg}}</output>
+    </ng-container>
+    <ng-container *ngIf="modo !== 'add'">
+      {{elemento.id}}
+    </ng-container>
+    <!-- <input type="number" class="form-control" id="id" name="id" [(ngModel)]="elemento.id" #id="ngModel"
+        required min="1" [readOnly]="modo !== 'add'">
+      <output class="error" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</output> -->
+  </div>
+  <div class="mb-3">
+    <label for="nombre" class="form-label">nombre:</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="elemento.nombre" #nombre="ngModel"
+      required minlength="2" maxlength="10">
+    <output class="error" [hidden]="!nombre.hasError('required')">Es obligatorio</output>
+    <output class="error" [hidden]="!nombre.hasError('minlength') && !nombre.hasError('maxlength')">Debe tener entre 2 y
+      10 letras</output>
+  </div>
+  <div class="mb-3">
+    <label for="apellidos" class="form-label">apellidos:</label>
+    <input type="text" class="form-control" id="apellidos" name="apellidos" [(ngModel)]="elemento.apellidos"
+      #apellidos="ngModel" minlength="2" maxlength="10" uppercase>
+    <output class="error" [hidden]="apellidos.valid">{{apellidos.errors | errormsg}}</output>
+  </div>
+  <div class="mb-3">
+    <label for="correo" class="form-label">correo:</label>
+    <input type="email" class="form-control" id="correo" name="correo" [(ngModel)]="elemento.correo" #correo="ngModel"
+      >
+    <output class="error" [hidden]="correo.valid">{{correo.errors | errormsg}}</output>
+  </div>
+  <div class="mb-3">
+    <label for="nif" class="form-label">nif:</label>
+    <input type="text" class="form-control" id="nif" name="nif" [(ngModel)]="elemento.nif" #nif="ngModel"
+      pattern="^\d{1,8}\w$" nif>
+    <output class="error" [hidden]="nif.valid">{{nif.errors | errormsg}}</output>
+  </div>
+  <div class="mb-3">
+    <label for="edad" class="form-label">edad:</label>
+    <input type="number" class="form-control" id="edad" name="edad" [(ngModel)]="elemento.edad" #edad="ngModel" min="16"
+      max="67">
+    <output class="error" [hidden]="edad.valid">{{edad.errors | errormsg}}</output>
+  </div>
+  <!-- <nav>
+    <input type="button" value="enviar" (click)="send()" [disabled]="miForm.invalid">
+    <input type="button" value="volver" (click)="cancel()">
+  </nav> -->
+  <app-form-buttons (send)="send()" [send-disabled]="miForm.invalid" (cancel)="cancel()" />
+</form>
+<ul>
+  <li *ngFor="let item of listado">{{item.nombre}} {{item.apellidos}}</li>
+</ul>

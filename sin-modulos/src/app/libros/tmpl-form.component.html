@@ -1,0 +1,47 @@
+<h1>Libro</h1>
+<form #miForm="ngForm" class="row gy-2 gx-2 align-items-start" [class.was-validated]="miForm.dirty">
+  <div class="form-floating">
+    <input class="form-control" type="text" name="id" id="id" [(ngModel)]="VM.Elemento.idLibro" #id="ngModel" required
+    pattern="^[1-9]\d*$" maxlength="6" placeholder="Referencia">
+    <label for="id">Referencia:</label>
+    <div class="invalid-feedback" [hidden]="id.valid">{{id.errors | errormsg}}</div>
+  </div>
+  <div class="form-floating">
+    <input class="form-control" type="text" name="titulo" id="titulo" [(ngModel)]="VM.Elemento.titulo" #titulo="ngModel"
+      required maxlength="50" placeholder="titulo">
+    <label for="titulo">Título:</label>
+    <div class="invalid-feedback" [hidden]="titulo.valid">{{titulo.errors | errormsg}}</div>
+  </div>
+  <div class="form-floating">
+    <input class="form-control" type="text" name="autor" id="autor" [(ngModel)]="VM.Elemento.autor" #autor="ngModel"
+      maxlength="50" placeholder="autor">
+    <label for="autor">Autor:</label>
+    <div class="invalid-feedback" [hidden]="autor.valid">{{autor.errors | errormsg}}</div>
+  </div>
+  <div class="form-floating">
+    <input class="form-control" type="text" name="pais" id="pais" [(ngModel)]="VM.Elemento.pais" #pais="ngModel"
+      maxlength="50" placeholder="pais">
+    <label for="pais">País:</label>
+    <div class="invalid-feedback" [hidden]="pais.valid">{{pais.errors | errormsg}}</div>
+  </div>
+  <div class="form-floating">
+    <input class="form-control" type="text" name="fecha" id="fecha" [(ngModel)]="VM.Elemento.fecha" #fecha="ngModel"
+      pattern="^[12]\d{3}$" placeholder="fecha">
+    <label for="fecha">Fecha:</label>
+    <div class="invalid-feedback" [hidden]="fecha.valid">{{fecha.errors | errormsg}}</div>
+  </div>
+  <div class="form-floating">
+    <input class="form-control" type="text" name="paginas" id="paginas" [(ngModel)]="VM.Elemento.paginas"
+      #paginas="ngModel" maxlength="4" pattern="^\d{1,4}$" placeholder="paginas">
+    <label for="paginas">Páginas:</label>
+    <div class="invalid-feedback" [hidden]="paginas.valid">{{paginas.errors | errormsg}}</div>
+  </div>
+  <div class="form-floating">
+    <input class="form-control" type="url" name="wiki" id="wiki" [(ngModel)]="VM.Elemento.wiki" #wiki="ngModel"
+      placeholder="wiki">
+    <label for="wiki">Wiki:</label>
+    <div class="invalid-feedback" [hidden]="wiki.valid">{{wiki.errors | errormsg}}</div>
+  </div>
+  <app-form-buttons (send)="VM.send()" [send-disabled]="miForm.invalid" (cancel)="VM.cancel()"
+    (delete)="VM.delete(VM.Elemento.idLibro)" [delete-visible]="VM.Modo === 'edit'" />
+</form>

@@ -23,6 +23,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AjaxWaitInterceptor } from './main/ajax-wait';
 import { ContactosModule } from './contactos';
+import { LibrosModule } from './libros';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ContactosModule } from './contactos';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, MainModule, SecurityModule, MyCoreModule, CommonServicesModule,
-    GraficoSvgComponent, CommonComponentModule, ContactosModule,
+    GraficoSvgComponent, CommonComponentModule, ContactosModule, LibrosModule,
   ],
   providers: [
     LoggerService,

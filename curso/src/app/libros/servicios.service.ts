@@ -130,7 +130,7 @@ export class LibrosViewModelService {
       case 0: msg = err.message; break;
       case 404: msg = `ERROR: ${err.status} ${err.statusText}`; break;
       default:
-        msg = `ERROR: ${err.status} ${err.statusText}.${err.error?.['title'] ? ` Detalles: ${err.error['title']}` : ''}`
+        msg = `ERROR: ${err.status} ${err.statusText}.${err.error?.['detail'] ? ` Detalles: ${err.error['detail']}` : ''}`
         break;
     }
     this.notify.add(msg)

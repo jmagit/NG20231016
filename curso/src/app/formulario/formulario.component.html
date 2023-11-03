@@ -41,7 +41,7 @@
   <div class="mb-3">
     <label for="nif" class="form-label">nif:</label>
     <input type="text" class="form-control" id="nif" name="nif" [(ngModel)]="elemento.nif" #nif="ngModel"
-      pattern="^\d{1,8}\w$" nif>
+      pattern="^\d{1,8}\w$" nifnie>
     <output class="error" [hidden]="nif.valid">{{nif.errors | errormsg}}</output>
   </div>
   <div class="mb-3">

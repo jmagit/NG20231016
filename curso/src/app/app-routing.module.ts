@@ -6,7 +6,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ContactosAddComponent, ContactosEditComponent, ContactosListComponent, ContactosViewComponent } from './contactos';
 // import { LibrosComponent } from './libros';
 // import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
-import { AuthCanActivateFn, AuthWithRedirectCanActivate, InRoleCanActivateChild, LoginFormComponent } from './security';
+import { AuthCanActivateFn, AuthWithRedirectCanActivate, InRoleCanActivateChild, LoginFormComponent, RegisterUserComponent } from './security';
 
 function svgFiles(url: UrlSegment[]) {
   return url.length === 1 && url[0].path.endsWith('.svg') ? ({consumed: url}) : null;
@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent},
   { path: 'inicio', component: HomeComponent},
   { path: 'login', component: LoginFormComponent },
+  { path: 'registro', component: RegisterUserComponent },
   { path: 'demos', component: DemosComponent, canActivate: [ AuthCanActivateFn ]},
   { path: 'chisme/de/hacer/numeros', component: CalculadoraComponent, title: 'Calculadora' },
   { path: 'contactos', component: ContactosListComponent, canActivate: [ AuthWithRedirectCanActivate('/login') ] },

@@ -8,7 +8,7 @@ import { LoggerService, MyCoreModule } from '@my/core';
 import { DAOServiceMock } from '../base-code';
 import { NavigationService, NotificationService } from '../common-services';
 
-import { Libros, LibrosDAOService, LibrosViewModelService } from './servicios.service';
+import { LibrosDAOService, LibrosViewModelService } from './servicios.service';
 import { NO_ERRORS_SCHEMA, Type } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LIBROS_COMPONENTES } from './componente.component';
@@ -102,7 +102,7 @@ describe('Modulo Libros', () => {
         imports: [HttpClientTestingModule, RouterTestingModule],
         providers: [NotificationService, LoggerService,
           {
-            provide: LibrosDAOService, useFactory: () => new DAOServiceMock<Libros, number>([...dataMock])
+            provide: LibrosDAOService, useFactory: () => new DAOServiceMock<any, number>([...dataMock])
           }
         ],
       });

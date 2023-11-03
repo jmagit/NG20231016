@@ -48,7 +48,7 @@ export class RegisterUserComponent implements OnInit {
     // }
   }
   public getErrorMessage(name: string): string {
-    let cntr = this.miForm.get(name)
+    const cntr = this.miForm.get(name)
     let msg = '';
     if (cntr)
       msg = this.pipe.transform(cntr.errors)
@@ -75,8 +75,8 @@ export class RegisterUserComponent implements OnInit {
     } as User);
     this.dao.add(this.model).subscribe({
       next: rslt => {
-        this.login.login(data.idUsuario, data.password.passwordValue).subscribe(
-          datos => {
+        this.login.login(data.idUsuario, data.password.passwordValue).subscribe({
+          next: datos => {
             if (datos) {
               this.notify.add('Usuario registrado', NotificationType.log);
               this.router.navigateByUrl('/');
@@ -84,10 +84,10 @@ export class RegisterUserComponent implements OnInit {
               this.notify.add('Error en el registro.');
             }
           },
-          err => { this.notify.add(err.message); }
-        );
+          error: err => { this.notify.add(err.error.detail || err.message); }
+        });
       },
-      error: err => { this.notify.add(err.message); }
+      error: err => { this.notify.add(err.error.detail || err.message); }
     });
   }
 }
